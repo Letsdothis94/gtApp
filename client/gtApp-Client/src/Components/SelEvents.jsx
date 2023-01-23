@@ -1,16 +1,22 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-function SelEvent({eventData, setEventData, selEvent, setSelEvent}){
+function SelEvents({eventData, setEventData, selEvent, setSelEvent}){
     const [confirmEvent, setConfirmEvent] = useState([])
     const handleSelEvent = (e) => {
         if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
         setConfirmEvent([...selEvent, e])
         console.log('event confirmed')
     }
+    const handleBack = (e) => {
+        const home = selEvent.filter((event)=> { return event.id != e.id})
+        setSelEvent(home)
+        console.log(selEvent)
+    }
     return(
-        <div>
+        <div style={{background: 'yellow', padding: '3%'}}>
             {
-                eventData.map((event, i)=> {
+                selEvent.map((event, i)=> {
                     return(
                         <div key={i}style={{background: 'red'}}>
                             <h2>event data</h2>
@@ -24,6 +30,7 @@ function SelEvent({eventData, setEventData, selEvent, setSelEvent}){
                                 <h2>{event.going} going</h2>
                             </div>
                             <button onClick={()=> handleSelEvent(event)}>Join</button>
+                            <Link to={'/'}><button onClick={()=> handleBack(event)}>Go back</button></Link>
                         </div>
                     )
                 })
@@ -32,4 +39,4 @@ function SelEvent({eventData, setEventData, selEvent, setSelEvent}){
     )
 }
 
-export default SelEvent
+export default SelEvents

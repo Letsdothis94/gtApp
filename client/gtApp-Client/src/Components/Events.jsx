@@ -4,7 +4,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
     
     const handleEvent = (e) => {
         if(selEvent.includes(e)) return
-        setSelEvent([...eventData, e])
+        setSelEvent([...selEvent, e])
         console.log('event added')
     }
     return(
@@ -14,6 +14,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
                 eventData.map((event, i)=> {
                     return(
                         <div key={i}>
+                        {        console.log(selEvent)}
                             <h2>event data</h2>
                             <ul>
                                 <li key={event.id}>{event.title}</li>

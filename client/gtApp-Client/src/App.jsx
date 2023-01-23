@@ -4,7 +4,7 @@ import Header from './Components/Header'
 import Login from './Components/Login'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
-import SelEvent from './Components/SelEvent'
+import SelEvents from './Components/SelEvents'
 
 function App() {
     const [selEvent, setSelEvent] = useState([])
@@ -31,7 +31,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
-          <Route path={'/selEvent'} element={<SelEvent eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+          <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
         </Routes>
       </BrowserRouter>
       {/* {console.log(loginData)} */}
