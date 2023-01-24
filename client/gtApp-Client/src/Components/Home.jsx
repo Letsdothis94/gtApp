@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Events from "./Events"
-import Search from "./Search"
 import { Link } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 
@@ -17,6 +16,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
             let req = await fetch('http://127.0.0.1:3000/events')
             let res = await req.json()
             setEventData(res)
+            console.log(eventData)
         }
         request()
     }, [])
@@ -27,8 +27,11 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
         <h1>This is the home page</h1>
             <Link to={"/login"}>go to login</Link>
             <Link to={"/register"}>register</Link>
+
             <Link to={"/post"}>form</Link>
             <Search eventData={eventData} setEventData={setEventData}/> 
+
+
             <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>
         </div>
     )

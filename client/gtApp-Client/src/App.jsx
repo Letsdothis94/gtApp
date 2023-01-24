@@ -16,8 +16,10 @@ import Postform from './Components/Postform'
 // }
 
 function App() {
+
   const [user, setUser] = useState(null)
   console.log(user)
+    const [confirmEvent, setConfirmEvent] = useState([])
     const [selEvent, setSelEvent] = useState([])
     const [eventData, setEventData] = useState([])
     const [loginData, setLoginData] = useState({
@@ -28,7 +30,7 @@ function App() {
         const request = async() => {
             let req = await fetch ('http://127.0.0.1:3000/users')
             let res = await req.json()
-            console.log(res)
+            // console.log(res)
             if (req.ok){
                 setLoginData({id: res.id, username: res.username})
             }
@@ -38,13 +40,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header loginData={loginData} setLoginData={setLoginData}/>
+        <Header confirmEvent={confirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/post'} element={<Postform />} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+          <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+
         </Routes>
       </BrowserRouter>
       {/* {console.log(loginData)} */}

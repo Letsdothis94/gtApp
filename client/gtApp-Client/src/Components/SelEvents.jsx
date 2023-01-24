@@ -1,17 +1,16 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Map from "./Map"
 
-function SelEvents({eventData, setEventData, selEvent, setSelEvent}){
-    const [confirmEvent, setConfirmEvent] = useState([])
+function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
     const handleSelEvent = (e) => {
         if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
-        setConfirmEvent([...selEvent, e])
+        setConfirmEvent([...confirmEvent, e])
         console.log('event confirmed')
     }
     const handleBack = (e) => {
         const home = selEvent.filter((event)=> { return event.id != e.id})
         setSelEvent(home)
-        console.log(selEvent)
     }
     return(
         <div style={{background: 'yellow', padding: '3%'}}>
@@ -29,12 +28,13 @@ function SelEvents({eventData, setEventData, selEvent, setSelEvent}){
                             <div>
                                 <h2>{event.going} going</h2>
                             </div>
-                            <button onClick={()=> handleSelEvent(event)}>Join</button>
+                            <Link to={'/'}><button onClick={()=> handleSelEvent(event)}>Join</button></Link>
                             <Link to={'/'}><button onClick={()=> handleBack(event)}>Go back</button></Link>
                         </div>
                     )
                 })
             }
+            <Map />
         </div>
     )
 }
