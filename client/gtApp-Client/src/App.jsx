@@ -6,8 +6,19 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import SelEvents from './Components/SelEvents'
 import Register from './Components/Register'
+import jwtDecode from "jwt-decode";
+import Postform from './Components/Postform'
+
+// let logUser;
+// if (localStorage.token) {
+//   const jwt = localStorage.getItem('token')
+//   logUser = jwtDecode(jwt)
+// }
 
 function App() {
+
+  const [user, setUser] = useState(null)
+  console.log(user)
     const [confirmEvent, setConfirmEvent] = useState([])
     const [selEvent, setSelEvent] = useState([])
     const [eventData, setEventData] = useState([])
@@ -34,7 +45,10 @@ function App() {
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
+          <Route path={'/post'} element={<Postform />} />
+          <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+
         </Routes>
       </BrowserRouter>
       {/* {console.log(loginData)} */}
