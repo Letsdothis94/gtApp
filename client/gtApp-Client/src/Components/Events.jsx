@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom" 
+import './Css/Home.css'
 function Events({selEvent, setSelEvent, eventData, setEventData}){
     const [searchEvent, setSearchEvent] = useState("")
 
@@ -13,7 +14,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
 
     const handleEventSearch = (e) => setSearchEvent(e.target.value)
     return(
-        <div>
+        <div className="event-cont">
             <h1>event page</h1>
             <input type="text" onChange={handleEventSearch} />
             {

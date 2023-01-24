@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Events from "./Events"
 import { Link } from 'react-router-dom'
+import './Css/Home.css'
 
 function Home({eventData, setEventData, selEvent, setSelEvent}) {
     useEffect(() => {
@@ -13,7 +14,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
         request()
     }, [])
     return (
-        <div>  
+        <div className="home-cont">  
         <h1>This is the home page</h1>
             <Link to={"/login"}>go to login</Link>
             <Link to={"/register"}>register</Link>
