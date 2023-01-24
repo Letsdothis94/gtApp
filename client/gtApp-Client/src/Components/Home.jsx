@@ -9,6 +9,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
             let req = await fetch('http://127.0.0.1:3000/events')
             let res = await req.json()
             setEventData(res)
+            console.log(eventData)
         }
         request()
     }, [])
