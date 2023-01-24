@@ -21,17 +21,22 @@ function Register(){
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        try {
-            const {data} = await http.post("/signup", userDetails)
-            localStorage.setItem("token", data)
-            navigate('/')
-            console.log(data)
-        } catch (error) {
-            console.error(error);
-            if (error.response && error.response.status === 400) {
-                setError(error.response.data)
-            }
-        }
+        const { data } = await http.post("/signup", userDetails)
+             localStorage.setItem("token", data)
+             navigate('/')
+             console.log(data)
+    
+        // try {
+        //     const {data} = await http.post("/signup", userDetails)
+        //     localStorage.setItem("token", data)
+        //     navigate('/')
+        //     console.log(data)
+        // } catch (error) {
+        //     console.error(error);
+        //     if (error.response && error.response.status === 400) {
+        //         setError(error.response.data)
+        //     }
+        // }
 
     };
   return (
