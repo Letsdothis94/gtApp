@@ -1,25 +1,54 @@
-import { useEffect, useState } from "react"
-import Events from "./Events"
-import Search from "./Search"
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import http from '../utils/http'
 
-function Home({eventData, setEventData, selEvent, setSelEvent}) {
-    useEffect(() => {
-        const request= async() => {
-            let req = await fetch('http://127.0.0.1:3000/events')
-            let res = await req.json()
-            setEventData(res)
+function Login() {
+    const [userDetails, setUserDetails] = useState({
+        email: "",
+        password: "",
+    });
+
+    const [error, setError] = useState(null);
+    let navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setUserDetails((prev) => {
+            return { ...prev, [name]: value };
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await http.post("/login", userDetails)
+            localStorage.setItem("token", data)
+            navigate('/')
+            console.log(data)
+        } catch (error) {
+            console.error(error);
+            if (error.response && error.response.status === 400) {
+                setError(error.response.data)
+            }
         }
-        request()
-    }, [])
-    return (
-        <div style={{background: 'orange'}}>  
-        <h1>This is the home page</h1>
-            <Link to={"/login"}>go to login</Link>
-            <Search eventData={eventData} setEventData={setEventData}/> 
-            <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>
-        </div>
-    )
+    };
+
+
+  return (
+      <div>Login
+          <form onSubmit={handleSubmit}>
+              <input type='text' name='email' placeholder='email' onChange={handleChange} /><br />
+              <input type='password' name='password' placeholder='password' onChange={handleChange} /><br />
+              {error && (
+                  <div>
+                      <p>{error}</p>
+                  </div>
+              )}
+              <button type='submit'>Submit</button>
+          </form>
+      </div>
+  )
 }
 
-export default Home
+export default Login

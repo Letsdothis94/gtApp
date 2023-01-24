@@ -17,6 +17,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
         <div style={{background: 'orange'}}>  
         <h1>This is the home page</h1>
             <Link to={"/login"}>go to login</Link>
+            <Link to={"/register"}>register</Link>
             <Search eventData={eventData} setEventData={setEventData}/> 
             <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>
         </div>

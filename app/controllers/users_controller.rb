@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
 
         def create
-        user = User.create!(username: params[:username], first_name: params[:first_name], last_name: params[:last_name])
+        user = User.create!(email: params[:email], password: params[:password])
         if user.valid?
             render json: user
         else
