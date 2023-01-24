@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Map from "./Map"
 
 function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
     const handleSelEvent = (e) => {
@@ -33,6 +34,7 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
                     )
                 })
             }
+            <Map />
         </div>
     )
 }

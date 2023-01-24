@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Events from "./Events"
-import Search from "./Search"
 import { Link } from 'react-router-dom'
 
 function Home({eventData, setEventData, selEvent, setSelEvent}) {
@@ -18,7 +17,6 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
         <h1>This is the home page</h1>
             <Link to={"/login"}>go to login</Link>
             <Link to={"/register"}>register</Link>
-            <Search eventData={eventData} setEventData={setEventData}/> 
             <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>
         </div>
     )
