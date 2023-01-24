@@ -27,7 +27,7 @@ function App() {
         request()
     }, [])
   return (
-    <div className="App">
+    <div className="App" style={{background: '#2C3E50'}}>
       <BrowserRouter>
         <Header confirmEvent={confirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>

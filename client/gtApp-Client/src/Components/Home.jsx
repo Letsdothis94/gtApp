@@ -13,7 +13,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
         request()
     }, [])
     return (
-        <div style={{background: 'orange'}}>  
+        <div>  
         <h1>This is the home page</h1>
             <Link to={"/login"}>go to login</Link>
             <Link to={"/register"}>register</Link>

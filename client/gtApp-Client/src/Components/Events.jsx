@@ -19,8 +19,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
             {
                 eventData.filter(event => event.title.includes(searchEvent)).map((event, i)=> {
                     return(
-                        <div >
-                        
+                        <div key={event.id}>
                             <h2>event data</h2>
                             <ul>
                                 <li key={event.id}>{event.title}</li>
