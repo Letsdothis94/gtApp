@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  post "/login", to: "sessions#login"
+  post "/signup", to: "sessions#signup"
+
+  resources :todos
+
   get '/events', to: 'events#index'
   get 'events/:id', to: 'events#show'
   patch '/events/:id', to: 'events#update'
