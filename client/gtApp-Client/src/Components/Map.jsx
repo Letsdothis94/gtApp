@@ -14,20 +14,35 @@ const center = {
 function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyBbsBqCsrFTZZhEWKG-96Oud-VrO5XnPhs'
+    googleMapsApiKey: 'AIzaSyBbsBqCsrFTZZhEWKG-96Oud-VrO5XnPhs',
+    libraries: ['places']
   })
+  if (isLoaded){
+    console.log('not loaded')
+  }
 
-  return isLoaded ? (
+  return (
+    <div>
+      {/* <Autocomplete>
+        <input type="text" placeholder='origin' />
+      </Autocomplete>
+      <Autocomplete>
+        <input type="text" placeholder='destination' />
+      </Autocomplete> */}
+        
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={13}
+        options={{
+          mapTypeControl: false
+          }}
       >
         <Marker position={center}/>
         { /* Child components, such as markers, info windows, etc. */ }
-        <></>
       </GoogleMap>
-  ) : <></>
+     </div>
+  )
 }
 
 export default Map
