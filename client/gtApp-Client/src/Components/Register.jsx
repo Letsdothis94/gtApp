@@ -22,7 +22,7 @@ function Register(){
     const handleSubmit = async(e) => {
         e.preventDefault();
         const { data } = await http.post("/signup", userDetails)
-             localStorage.setItem("token", data)
+             localStorage.setItem("token", JSON.stringify(data));
              navigate('/')
              console.log(data)
     
