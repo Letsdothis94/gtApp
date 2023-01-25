@@ -9,7 +9,7 @@ class EventsController < ApplicationController
     end
 
     def create
-        event = Event.create!(title: params[:title], date: params[:date], about: params[:about], location: params[:location],host_id: params[:host_id], user_id: params[:user_id])
+        event = Event.create!(title: params[:title], date: params[:date], about: params[:about], location: params[:location], user_id:params[:user_id])
         if event.valid?
             render json: event
         else

@@ -54,7 +54,8 @@ function Postform(){
                 <input type="submit" value="Post Event" onClick={handleClick}/>
             </form> */}
             <div>
-                <Box>
+                <Box style={{border:'1px solid white', margin: '2%'}}>
+
                     <FormControl onSubmit={handleOnSubmit}>
                     
                         <TextField variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)}></TextField>

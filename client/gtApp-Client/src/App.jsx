@@ -10,17 +10,22 @@ import jwtDecode from "jwt-decode"
 import Postform from './Components/Postform'
 import Profile from './Components/Profile'
 import Logout from './Components/Logout'
+import Footer from './Components/Footer'
 
 let logUser;
 if (localStorage.token) {
   const jwt = localStorage.getItem('token')
   logUser = jwtDecode(jwt)
   console.log(jwt.toString)
+  // userData = logUser.user_data
 }
 
 function App() {
   const [user, setUser] = useState(logUser)
-  console.log(user)
+  console.log(logUser)
+  // let userData = logUser.user_data
+  // console.log(userData)
+
     const [confirmEvent, setConfirmEvent] = useState([])
     const [selEvent, setSelEvent] = useState([])
     const [eventData, setEventData] = useState([])
@@ -49,10 +54,13 @@ function App() {
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/post'} element={<Postform />} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
-          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/profile'} element={<Profile user={user} />} />
+
           <Route path={'/logout'} element={<Logout />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
       {/* {console.log(loginData)} */}
     </div>
