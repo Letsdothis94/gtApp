@@ -5,6 +5,7 @@ const FilterBar = ({
   onNameFilter,
   onGenderFilter,
   onDateFilter,
+  refreshPage
 }) => {
   const [filters, setFilters] = useState({
     name: "",
@@ -88,6 +89,7 @@ const FilterBar = ({
           onChange={handleInput("to")}
         />
       </div> */}
+      <button onClick={refreshPage}>refresh</button>
     </div>
   );
 };
