@@ -14,7 +14,7 @@ import jwtDecode from 'jwt-decode'
 // // }
 function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
     // const [user, setUser] = useState(logUser) 
-
+    console.log(user)
     useEffect(() => {
         const request= async() => {
             let req = await fetch('http://127.0.0.1:3000/events')
