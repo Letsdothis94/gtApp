@@ -9,6 +9,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import dayjs from "dayjs";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isSameOrAfter);
+
 
 function Events({selEvent, setSelEvent, eventData, setEventData}){
     const [searchEvent, setSearchEvent] = useState("")
@@ -20,9 +26,18 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
         console.log('event added')
     }
     const handleFilterName = (name) => {
-    const filteredData = allData.filter((item) => {
+    const filteredData = eventData.filter((item) => {
       const fullName = `${item.title}`;
       if (fullName.toLowerCase().includes(name.toLowerCase())) {
+        return item;
+      }
+    });
+
+    setEventData(filteredData);
+  };
+  const handleFilterDate = (date, field) => {
+    const filteredData = eventData.filter((item) => {
+      if (field === "from" && dayjs(item.date).isSameOrAfter(dayjs(date))) {
         return item;
       }
     });
@@ -32,7 +47,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
     // const handleEventSearch = (e) => setSearchEvent(e.target.value)
     return(
         <div className="event-cont" style={{padding: '5%', background: 'rgba(113, 108, 108, 0.46)', borderRadius: '2%', display: 'flex', flexDirection: 'column'}}>
-            <Filter onNameFilter={handleFilterName}/>
+            <Filter onNameFilter={handleFilterName} onDateFilter={handleFilterDate}/>
             {
                 eventData.map((event, i)=> {
                     return(

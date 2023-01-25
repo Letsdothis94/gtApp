@@ -6,7 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import SelEvents from './Components/SelEvents'
 import Register from './Components/Register'
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 import Postform from './Components/Postform'
 
 // let logUser;

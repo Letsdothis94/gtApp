@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './Css/Home.css'
 
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 
 // let logUser;
@@ -33,8 +33,6 @@ function Home({eventData, setEventData, selEvent, setSelEvent}) {
             <Link to={"/register"}>register</Link>
 
             <Link to={"/post"}>form</Link>
-            <Search eventData={eventData} setEventData={setEventData}/> 
-
 
             <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>
         </div>
