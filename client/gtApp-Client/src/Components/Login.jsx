@@ -23,7 +23,7 @@ function Login() {
         e.preventDefault();
         try {
             const { data } = await http.post("/login", userDetails)
-            localStorage.setItem("token", data)
+            localStorage.setItem("token", JSON.stringify(data));
             navigate('/')
             console.log(data)
         } catch (error) {

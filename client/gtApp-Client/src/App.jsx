@@ -8,16 +8,18 @@ import SelEvents from './Components/SelEvents'
 import Register from './Components/Register'
 import jwtDecode from "jwt-decode";
 import Postform from './Components/Postform'
+import Profile from './Components/Profile'
+import Logout from './Components/Logout'
 
-// let logUser;
-// if (localStorage.token) {
-//   const jwt = localStorage.getItem('token')
-//   logUser = jwtDecode(jwt)
-// }
+let logUser;
+if (localStorage.token) {
+  const jwt = localStorage.getItem('token')
+  logUser = jwtDecode(jwt)
+  console.log(jwt.toString)
+}
 
 function App() {
-
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(logUser)
   console.log(user)
     const [confirmEvent, setConfirmEvent] = useState([])
     const [selEvent, setSelEvent] = useState([])
@@ -42,13 +44,14 @@ function App() {
       <BrowserRouter>
         <Header confirmEvent={confirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>
-          <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+          <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} user={user}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/post'} element={<Postform />} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
-
+          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/logout'} element={<Logout />} />
         </Routes>
       </BrowserRouter>
       {/* {console.log(loginData)} */}
