@@ -6,7 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import SelEvents from './Components/SelEvents'
 import Register from './Components/Register'
-import jwtDecode from "jwt-decode";
+import jwtDecode from "jwt-decode"
 import Postform from './Components/Postform'
 import Profile from './Components/Profile'
 import Logout from './Components/Logout'
@@ -49,7 +49,7 @@ function App() {
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/post'} element={<Postform />} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
-          <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+          <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'/logout'} element={<Logout />} />
         </Routes>
