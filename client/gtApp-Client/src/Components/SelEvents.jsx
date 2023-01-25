@@ -13,7 +13,7 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
         setSelEvent(home)
     }
     return(
-        <div style={{background: 'yellow', padding: '3%'}}>
+        <div style={{padding: '3%'}}>
             {
                 selEvent.map((event, i)=> {
                     return(
@@ -34,7 +34,7 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
                     )
                 })
             }
-            <Map />
+            <Map selEvent={selEvent} />
         </div>
     )
 }

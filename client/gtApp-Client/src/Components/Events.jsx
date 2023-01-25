@@ -25,6 +25,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
         setSelEvent([...selEvent, e])
         console.log('event added')
     }
+
     const handleFilterName = (name) => {
     const filteredData = eventData.filter((item) => {
       const fullName = `${item.title}`;
