@@ -14,18 +14,55 @@ import './Css/Home.css'
 // // }
 function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
 
-    // const [user, setUser] = useState(logUser) 
-    console.log(user)
-
+    //WebSockets Starts Here:
     useEffect(() => {
-        const request= async() => {
-            let req = await fetch('http://127.0.0.1:3000/events')
+        const request = async () => {
+            let req = await fetch(`http://127.0.0.1:3000/events`)
             let res = await req.json()
             setEventData(res)
-            // console.log(eventData)
+            console.log(res)
+
         }
-        request()
+        const connect = async () => {
+            let ws;
+            ws = new WebSocket("ws://localhost:3000/cable")
+            ws.onopen = () => {
+                console.log("WS is on!")
+                ws.send(JSON.stringify({ "command": "subscribe", "identifier": `{\"channel\": \"LiveFeedChannel\"}` }))
+            }
+            ws.onmessage = (event) => {
+                const { data } = event;
+                let payload = JSON.parse(data)
+                if (payload.type === "ping" || payload.type === "message") return;
+                let x = JSON.parse(event.data)
+                console.log("It still works :s", x)
+                if (x.type === "confirm_subscription") return;
+                const post = x?.message?.post
+                if (post) {
+                    setEventData(prevState => {
+                        return [...prevState, post]
+                    })
+                }
+        }
+    }
+        request();
+        connect();
     }, [])
+
+    //WebSockets Ends Here
+
+    // const [user, setUser] = useState(logUser) 
+    // console.log(user)
+
+    // useEffect(() => {
+    //     const request= async() => {
+    //         let req = await fetch('http://127.0.0.1:3000/events')
+    //         let res = await req.json()
+    //         setEventData(res)
+    //         // console.log(eventData)
+    //     }
+    //     request()
+    // }, [])
 
 
 
