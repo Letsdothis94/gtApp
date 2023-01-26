@@ -1,0 +1,30 @@
+.maindiv{
+    height: 90vh;
+    background-color: bisque;
+}
+
+.formoutbody{
+    margin: auto;
+    width: 50vh;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+.formbody {
+    background-color: azure;
+    border-radius: 10px;
+    height: 60vh;
+}
+
+.formlabel{
+    color: black;
+    padding-top: 15%;
+}
+
+.pform{
+    color: black;
+}
+
+
+
