@@ -13,6 +13,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 
 
 const containerStyle = { width: '500px', height: '500px'};
@@ -31,7 +32,7 @@ function Map({selEvent}) {
     libraries
   })
   if(!isLoaded) return <div>Loading...</div>
-      {console.log(selEvent[0])}
+      // {console.log(selEvent[0])}
 
   const originSelect = async (address) => {
     const results = await getGeocode({ address });
@@ -41,7 +42,7 @@ function Map({selEvent}) {
   originSelect(selEvent[0].location)
 
   return (
-    <>
+    <div className='map-cont'>
         <div>
           <PlacesAutoComplete originSelect ={originSelect} selEvent={selEvent} setOrigin={setOrigin}/>
         </div>
@@ -56,7 +57,7 @@ function Map({selEvent}) {
           {origin && <Marker position={origin}/>}
           {selected && <Marker position={selected}/>}
         </GoogleMap>
-    </>
+    </div>
   )
 } 
 //PLACES AUTO COMPLETE IS USED TO HAVE THE SEARCH BAR AUTOCOMPLETE 
@@ -79,16 +80,16 @@ const PlacesAutoComplete = ({ setOrigin, selEvent}) => {
   };
 
   return (
-    <>
+    <div className='input-cont'>
       <Combobox onSelect={handleSelect}>
         <ComboboxInput 
           value={value} //INPUTS VALUE 
           onChange={(e) => setValue(e.target.value)} 
           disabled={!ready} //INPUT WILL DISABLE IF THE SCRIPT IS NOT READY
           className={'combobox-input'} 
-          placeholder='search'/>
+          placeholder='Search Origin'/>
         <ComboboxPopover>
-          <ComboboxList style={{color: 'red'}}>
+          <ComboboxList style={{color: 'black', fontFamily: 'sans-serif'}}>
           {
             status === 'OK' && data.map(({place_id, description}) => <ComboboxOption key={place_id} value={description}/>)
           }
@@ -103,14 +104,14 @@ const PlacesAutoComplete = ({ setOrigin, selEvent}) => {
           className={'combobox-input'} 
           placeholder='search'/>
         <ComboboxPopover>
-          <ComboboxList style={{color: 'red'}}>
+          <ComboboxList style={{color: 'black'}}>
           {
             status === 'OK' && data.map(({place_id, description}) => <ComboboxOption key={place_id} value={description}/>)
           }
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
-    </>
+    </div>
   )
 }
 export default Map
