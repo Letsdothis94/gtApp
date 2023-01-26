@@ -50,7 +50,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
     }
 
     return(
-        <div className="event-cont" style={{padding: '5%', background: 'rgba(113, 108, 108, 0.46)', borderRadius: '2%', display: 'flex', flexDirection: 'column'}}>
+        <div className="event-cont" style={{padding: '5%', backgroundColor:'#1A1A1D', borderRadius: '2%', display: 'flex', flexDirection: 'column'}}>
             <Filter onNameFilter={handleFilterName} onDateFilter={handleFilterDate} refreshPage={refreshPage}/>
             {
                 eventData.map((event, i)=> {
