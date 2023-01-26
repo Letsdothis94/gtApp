@@ -57,7 +57,7 @@ function App() {
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/post'} element={<Postform />} />
-          <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
+          <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>}/>
 
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/profile'} element={<Profile user={user} />} />

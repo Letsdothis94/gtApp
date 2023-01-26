@@ -19,6 +19,7 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
     const handleSelEvent = (e) => {
         if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
         setConfirmEvent([...confirmEvent, e])
+        // console.log(confirmEvent)
         console.log('event confirmed')
     }
 // TO DELETE FROM STATE AND GO BACK TO EVENT PAGE

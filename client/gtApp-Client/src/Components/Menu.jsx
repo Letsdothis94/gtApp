@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { Link } from 'react-router-dom';
 
 export default function BasicMenu({confirmEvent}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,9 +38,10 @@ export default function BasicMenu({confirmEvent}) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem>  <BasicModal confirmEvent={confirmEvent}/>   </MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem><BasicModal confirmEvent={confirmEvent}/></MenuItem>
+        <Link to={'/profile'} ><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
+        <Link to={'/register'} ><MenuItem onClick={handleClose}>Register</MenuItem></Link>
+        <Link to={'/logout'} ><MenuItem onClick={handleClose}>Logout</MenuItem></Link>
       </Menu>
     </div>
   );
@@ -63,7 +66,7 @@ function BasicModal({confirmEvent}) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div key={confirmEvent.id}>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
@@ -71,19 +74,22 @@ function BasicModal({confirmEvent}) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} style={{color:'black'}}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Events Reserved
           </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
             {
-                confirmEvent.map((x)=> {
-                    return(
-                        <ul>
-                            <li>{x.title}</li>
-                        </ul>
-                    )
-                })
+              confirmEvent.map((x)=> {
+                  return(
+                    <>
+                          <div>{x.title}</div>
+                          <CancelIcon />
+                    </>
+                  )
+              })
             }
+          </Typography>
         </Box>
       </Modal>
     </div>

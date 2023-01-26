@@ -16,7 +16,6 @@ function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
 
     // const [user, setUser] = useState(logUser) 
     console.log(user)
-=======
 
     useEffect(() => {
         const request= async() => {

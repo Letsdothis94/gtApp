@@ -6,5 +6,4 @@ class Event < ApplicationRecord
     validates :about, presence: true, length: { in: 10..200 }
     validates :location, presence: true
     # validates :date, format: { with: /\d{2}\/\d{2}\/\d{4}/ }
-    validates :date, numericality: { only_integer: true}, length: { is: 8 }
 end
