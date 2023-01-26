@@ -3,15 +3,18 @@ import { Link } from "react-router-dom"
 import Map from "./Map"
 
 function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
+// TO ADD TO CONFIRMATION PAGE 
     const handleSelEvent = (e) => {
         if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
         setConfirmEvent([...confirmEvent, e])
         console.log('event confirmed')
     }
+// TO DELETE FROM STATE AND GO BACK TO EVENT PAGE
     const handleBack = (e) => {
         const home = selEvent.filter((event)=> { return event.id != e.id})
         setSelEvent(home)
     }
+
     return(
         <div style={{padding: '3%'}}>
             {
