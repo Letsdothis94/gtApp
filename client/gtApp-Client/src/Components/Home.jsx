@@ -32,7 +32,7 @@ function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
 
     // console.log(user.token)
     return (
-        <div className="home-cont">  
+        <div style={{backgroundColor:'#1A1A1D'}} className="home-cont">  
             <h1>This is the home page</h1>
                 {!user && (
                 <>

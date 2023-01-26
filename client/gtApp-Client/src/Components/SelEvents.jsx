@@ -16,16 +16,46 @@ import Button from '@mui/material/Button';
 
 function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
 // TO ADD TO CONFIRMATION PAGE 
+<<<<<<< HEAD
     const handleSelEvent = (e) => {
         if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
         setConfirmEvent([...confirmEvent, e])
         // console.log(confirmEvent)
         console.log('event confirmed')
     }
+=======
+    // const handleSelEvent = (e) => {
+    //     if(selEvent.number <= 0 || confirmEvent.includes(e)) return console.log('cant confirm')
+    //     setConfirmEvent([...confirmEvent, e])
+    //     console.log('event confirmed')
+    // }
+>>>>>>> 4239b96e9290a7f6e7d0de1791b89dc1720ee7ae
 // TO DELETE FROM STATE AND GO BACK TO EVENT PAGE
     const handleBack = (e) => {
         const home = selEvent.filter((event)=> { return event.id != e.id})
         setSelEvent(home)
+    }
+
+
+    //to join and update database
+    console.log(selEvent[0].id)
+    let going = selEvent[0].going
+
+    const handleClick = (event) => {
+        console.log('joining')
+        console.log(event)
+        let adding = {going: going + 1};
+        fetch(`http://127.0.0.1:3000/events/${selEvent[0].id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                adding
+            ),
+        })
+            .then((r) => r.json())
+            .then(console.log('success'))
     }
 
     return(
@@ -72,7 +102,7 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
                                 <List>
                                     <ListItem style={{display: 'flex', justifyContent: 'space-between', padding: '10%'}}>
                                         <Link style={{textDecoration: 'none'}} to={'/'}>
-                                            <Button variant='contained' onClick={()=> handleSelEvent(event)}>Join</Button>
+                                            <Button variant='contained' onClick={() => handleClick(event)}>Join</Button>
                                         </Link>
                                         <Link style={{textDecoration: 'none'}} to={'/'}>
                                             <Button variant='contained' onClick={()=> handleBack(event)}>Go back</Button>
