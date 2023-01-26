@@ -82,31 +82,32 @@ function Profile({user}) {
                     <h3>user_id: {userData}</h3>
                 </div>
                 <div>
-                    <button onClick={()=>{logout()}}>Logout</button>
+                    <button onClick={() => { logout() }}>Logout</button>
                 </div>
             </div>
             <div style={{border:'1px solid black'}}>
                 <h1>Post Form</h1>
                 <div>
-                    <Box style={{ border: '1px solid white', margin: '2%' }}>
+                    <Box style={{ border: '1px solid white', margin: 'auto', backgroundColor:'white', width:'60vw', height:'30vh', borderRadius:'10px' }}>
+                            <h3 style={{color:'black', textAlign:'center'}}>Add Event!</h3>
 
-                        <FormControl onSubmit={handleOnSubmit}>
+                        <FormControl onSubmit={handleOnSubmit}  style={{margin:'10px', display:'flex'}}>
 
-                            <TextField variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)}></TextField>
-
-
-                            <TextField variant="outlined" value={about} onChange={(e) => setAbout(e.target.value)}></TextField>
+                            <TextField variant="outlined" label="Title of Event" value={title} onChange={(e) => setTitle(e.target.value)}></TextField>
 
 
-                            <TextField variant="outlined" value={date} onChange={(e) => setDate(e.target.value)}></TextField>
+                            <TextField variant="outlined" label="About" value={about} onChange={(e) => setAbout(e.target.value)}></TextField>
 
 
-                            <TextField variant="outlined" value={location} onChange={(e) => setLocation(e.target.value)}></TextField>
+                            <TextField variant="outlined" label="Date Format: 00/00/2023" value={date} onChange={(e) => setDate(e.target.value)}></TextField>
 
-                            <Button variant="outlined" onClick={handleOnSubmit}>Submit</Button>
+
+                            <TextField variant="outlined" label="Location" value={location} onChange={(e) => setLocation(e.target.value)}></TextField>
+
+                            <Button style={{margin:'10px'}} variant="contained" onClick={handleOnSubmit}>Submit</Button>
                         </FormControl><br />
                     </Box>
-                </div>
+                </div><br />
             </div>
             <div style={{ border: '1px solid black' }}>
                 <h1>Your Events</h1>
@@ -114,11 +115,12 @@ function Profile({user}) {
                     {
                         filteredEvents.map((x, i) => {
                             return(
-                                <div key={i} style={{ border: '1px solid black', margin:'10px' }}>
-                                <h2>Title: {x.title}{x.id}</h2>
+                                <div key={i} style={{ border: '1px solid black', margin:'10px', backgroundColor:' azure', color:'black', padding:'8px' }}>
+                                <h2>Title: {x.title}</h2>
                                 <h3>About: {x.about}</h3>
                                 <p>Location: {x.location}</p>
                                 <p>MAP GOES HERE!</p>
+                                <p>Attendees: {x.going}</p>
                                     <button onClick={()=>{cancelEvent(x)}} >Cancel</button>
                                 </div>
                             )

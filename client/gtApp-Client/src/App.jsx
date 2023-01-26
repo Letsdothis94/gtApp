@@ -11,6 +11,9 @@ import Postform from './Components/Postform'
 import Profile from './Components/Profile'
 import Logout from './Components/Logout'
 import Footer from './Components/Footer'
+import './Styles/Register.css'
+import './Styles/Login.css'
+import './Styles/Profile.css'
 
 let logUser;
 if (localStorage.token) {
@@ -19,6 +22,8 @@ if (localStorage.token) {
   console.log(jwt.toString)
   // userData = logUser.user_data
 }
+  
+
 
 function App() {
   const [user, setUser] = useState(logUser)
