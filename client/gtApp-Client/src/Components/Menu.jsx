@@ -65,6 +65,23 @@ function BasicModal({confirmEvent}) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+  const handledelete = (event) => {
+        // let adding = {going: going - 1};
+        // fetch(`http://127.0.0.1:3000/events/${selEvent[0].id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(
+        //         adding
+        //     ),
+        // })
+        //     .then((r) => r.json())
+        //     .then(console.log('success'))
+        console.log('deleted')
+    }
+
   return (
     <div key={confirmEvent.id}>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -80,12 +97,12 @@ function BasicModal({confirmEvent}) {
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {
-              confirmEvent.map((x)=> {
+              confirmEvent.map((confirmed)=> {
                   return(
-                    <>
-                          <div>{x.title}</div>
-                          <CancelIcon />
-                    </>
+                    <div key={confirmed.id}>
+                          <div>{confirmed.title}</div>
+                          <CancelIcon onClick={()=> handledelete(confirmed)}/>
+                    </div>
                   )
               })
             }
