@@ -66,7 +66,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
                                     Event: {event.title}
                                     </Typography>
                                     <Typography sx={{ mb: 1.5 }}>
-                                    {event.about}
+                                    {event.about}{event.going}
                                     </Typography>
                                     <Typography variant="body2">
                                     Date: {event.date}
