@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_01_23_231655) do
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.integer "date"
+    t.date "date"
     t.string "about"
     t.string "location"
     t.integer "going", default: 1
