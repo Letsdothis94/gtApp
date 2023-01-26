@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './Css/Home.css'
 
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 
 // let logUser;

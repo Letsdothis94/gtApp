@@ -1,3 +1,65 @@
 .home-cont{
     padding: 0 8%;
+    font-family: 'Work Sans', sans-serif;
+    overflow: hidden;
+}
+.card-cont{
+    color: #fff;
+    margin: 3% 0;
+}
+.event-cont .card-cont{
+    background: rgba(113, 108, 108, 0.46);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(113, 108, 108, 0.2);
+}
+
+.event-cont input{
+    border: 1px solid grey;
+        border-radius: 5px;
+        width: 50%;
+        padding: 2px 23px 2px 30px;
+        outline: 0;
+        background-color: #f5f5f5;
+        align-self: center;
+}
+
+.combobox-input {
+    width: 100%;
+    padding: 1rem;
+    outline: 0;
+    margin-bottom: 3%;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.sel-cont{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+.sel-event-cont{
+    font-family: 'Work Sans', sans-serif;
+}
+.sel-event-cont .mailbox ul{
+    padding: 10% 0
+ }
+
+.data-reach-combobox input{
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 50%;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #f5f5f5;
+    align-self: center;
+}
+
+.input-cont{
+    width: 36.4vw;
+}
+
+.going{
+    background: white;
 }
