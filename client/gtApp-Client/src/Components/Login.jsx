@@ -42,7 +42,7 @@ function Login() {
       <div className='maindiv'>
         <div className='formoutbody'>
               <form onSubmit={handleSubmit} className='formbody'>
-                  <h2 className='formlabel'>LOGIN</h2>
+                  <h2 className='formlabel'>LOGIN test2</h2>
                   <p className='pform'>Email</p>
               {/* <input type='text' name='email' placeholder='email' onChange={handleChange} /><br /> */}
               <TextField id="outlined-basic" label="E-mail or username" variant="outlined" name='email' onChange={handleChange} /><br />
