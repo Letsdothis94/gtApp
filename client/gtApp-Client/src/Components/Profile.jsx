@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import http from '../utils/http'
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function Profile({user}) {
@@ -77,18 +78,18 @@ function Profile({user}) {
     return (
         <div>
             <div>
-                <div>
-                    <h1>Profile Page</h1>
-                    <h3>user_id: {userData}</h3>
-                </div>
-                <div>
-                    <button onClick={() => { logout() }}>Logout</button>
+                <div style={{ borderTop: '1px solid black' }}>
+                    <h1 className='robotomedium'>Profile Page</h1>
+                    <h4 className='robotoRegular' style={{justifyContent:'right'}}>User: {userData}</h4>
+                    <Button variant="contained" color="success" onClick={() => { logout() }}>
+                        Logout
+                    </Button>
                 </div>
             </div>
             <div style={{border:'1px solid black'}}>
-                <h1>Post Form</h1>
+                <h2 className='robotomedium'>Post Form</h2>
                 <div>
-                    <Box style={{ border: '1px solid white', margin: 'auto', backgroundColor:'white', width:'60vw', height:'30vh', borderRadius:'10px' }}>
+                    <Box style={{ border: '1px solid white', margin: 'auto', backgroundColor:'white', width:'60vw', height:'40vh', borderRadius:'10px' }}>
                             <h3 style={{color:'black', textAlign:'center'}}>Add Event!</h3>
 
                         <FormControl onSubmit={handleOnSubmit}  style={{margin:'10px', display:'flex'}}>
@@ -110,18 +111,20 @@ function Profile({user}) {
                 </div><br />
             </div>
             <div style={{ border: '1px solid black' }}>
-                <h1>Your Events</h1>
-                <div style={{border:'1px solid white'}}>
+                <h2 className='robotomedium'>Your Events</h2>
+                <div style={{border:'1px solid white', height:'33vh', overflow:'auto'}}>
                     {
                         filteredEvents.map((x, i) => {
                             return(
                                 <div key={i} style={{ border: '1px solid black', margin:'10px', backgroundColor:' azure', color:'black', padding:'8px' }}>
-                                <h2>Title: {x.title}</h2>
-                                <h3>About: {x.about}</h3>
-                                <p>Location: {x.location}</p>
+                                    <h2 className='robotomedium'>Title: {x.title}</h2>
+                                    <h4 className='robotomedium'>About: {x.about}</h4>
+                                    <p className='robotoRegular'>Location: {x.location}</p>
                                 <p>MAP GOES HERE!</p>
                                 <p>Attendees: {x.going}</p>
-                                    <button onClick={()=>{cancelEvent(x)}} >Cancel</button>
+                                    <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => { cancelEvent(x) }}>
+                                        Cancel Event
+                                    </Button>
                                 </div>
                             )
                         })

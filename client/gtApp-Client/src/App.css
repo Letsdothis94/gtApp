@@ -4,3 +4,11 @@ body{
     background: #1A1A1D;
     overflow-x: hidden;
 }
+
+.robotomedium {
+    font-family: 'Roboto', sans-serif;
+}
+
+.robotoRegular {
+    font-family: 'Roboto', sans-serif;
+}
