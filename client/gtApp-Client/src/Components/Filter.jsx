@@ -5,42 +5,43 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 
 const FilterBar = ({
 //   genders,
-  onNameFilter,
-  onGenderFilter,
-  onDateFilter,
+  // onNameFilter,
+  // onGenderFilter,
+  // onDateFilter,
+  handleChange,
   refreshPage
 }) => {
-  const [filters, setFilters] = useState({
-    name: "",
-    gender: "",
-    from: "",
-    to: "",
-  });
+  // const [filters, setFilters] = useState({
+  //   name: "",
+  //   gender: "",
+  //   from: "",
+  //   to: "",
+  // });
 
-  const handleInput = (field) => (event) => {
-    const { value } = event.target;
+  // const handleInput = (field) => (event) => {
+  //   const { value } = event.target;
 
-    setFilters({
-      ...filters,
-      [field]: value,
-    });
+  //   setFilters({
+  //     ...filters,
+  //     [field]: value,
+  //   });
 
-    switch (field) {
-      case "title":
-        onNameFilter(value);
-        break;
-    //   case "gender":
-    //     onGenderFilter(value);
-    //     break;
-      case "from":  
-        onDateFilter(value, "from");
-        break;
-    //   case "to":
-    //     break;
-      default:
-        break;
-    }
-  };
+  //   switch (field) {
+  //     case "title":
+  //       onNameFilter(value);
+  //       break;
+  //   //   case "gender":
+  //   //     onGenderFilter(value);
+  //   //     break;
+  //     case "from":  
+  //       onDateFilter(value, "from");
+  //       break;
+  //   //   case "to":
+  //   //     break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   return (
     <div className="filter-cont">
@@ -54,8 +55,8 @@ const FilterBar = ({
           className="title-input"
           id="name"
           placeholder="Search Event"
-          value={filters.title}
-          onChange={handleInput("title")}
+          // value={filters.title}
+          onChange={handleChange}
         />
         <Button variant="contained" style={{background: '#383838'}} onClick={refreshPage}><RefreshIcon/></Button>
       </div>

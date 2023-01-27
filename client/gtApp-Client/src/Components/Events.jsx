@@ -17,7 +17,12 @@ dayjs.extend(isSameOrAfter);
 
 
 function Events({selEvent, setSelEvent, eventData, setEventData}){
+    const [searchInput, setSearchInput] = useState("");
 
+    const handleChange = (e) => {
+        e.preventDefault();
+        setSearchInput(e.target.value);
+    };
     const handleEvent = (e) => {
         if(selEvent.includes(e)) return
         setSelEvent([...selEvent, e])
@@ -51,10 +56,10 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
 
     return(
         <div className="event-cont" style={{padding: '5%', backgroundColor:'#1A1A1D', borderRadius: '2%', display: 'flex', flexDirection: 'column'}}>
-            <Filter onNameFilter={handleFilterName} onDateFilter={handleFilterDate} refreshPage={refreshPage}/>
+            <Filter setSearchInput={setSearchInput} handleChange={handleChange} onNameFilter={handleFilterName} onDateFilter={handleFilterDate} refreshPage={refreshPage}/>
             <div className="event-wrap">
             {
-                eventData.map((event, i)=> {
+                eventData.filter(event => event.title.includes(searchInput)).map((event, i)=> {
                     return(
                         <div className='card-cont' key={event.id}>
                             <Card style={{background:'none', borderRadius: '15px', color: 'black', width: '100%'}}>
