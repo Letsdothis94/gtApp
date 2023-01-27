@@ -7,7 +7,7 @@ import './App.css'
 import SelEvents from './Components/SelEvents'
 import Register from './Components/Register'
 import jwtDecode from "jwt-decode"
-import Postform from './Components/Postform'
+import Confirmed from './Components/Confirmed'
 import Profile from './Components/Profile'
 import Logout from './Components/Logout'
 import Footer from './Components/Footer'
@@ -51,12 +51,12 @@ function App() {
   return (
     <div className="App" style={{background: '#414141'}}>
       <BrowserRouter>
-        <Header confirmEvent={confirmEvent} loginData={loginData} setLoginData={setLoginData}/>
+        <Header confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} user={user}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
-          <Route path={'/post'} element={<Postform />} />
+          <Route path={'/confirmed'} element={<Confirmed confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>}/>
 
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
