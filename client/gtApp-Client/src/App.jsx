@@ -38,6 +38,7 @@ function App() {
         id: null, 
         username: null 
     })
+    const [qr, setQr] = useState('')
     useEffect(()=> {
         const request = async() => {
             let req = await fetch ('http://127.0.0.1:3000/users')
@@ -58,7 +59,7 @@ function App() {
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
-          <Route path={'/confirmed'} element={<Confirmed confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>} />
+          <Route path={'/confirmed'} element={<Confirmed user={user} qr={qr} setQr={setQr} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>} />
           <Route path={'/selEvent'} element={<SelEvents eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>}/>
 
           <Route path={'/selEvent'} element={<SelEvents confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
