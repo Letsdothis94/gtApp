@@ -13,6 +13,7 @@ import Logout from './Components/Logout'
 import Footer from './Components/Footer'
 import './Styles/Register.css'
 import './Styles/Profile.css'
+import IntroPage from './Components/IntroPage'
 
 let logUser;
 if (localStorage.token) {
@@ -54,6 +55,7 @@ function App() {
       <BrowserRouter>
         <Header user={user} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>
+          <Route path='/welcome' element={<IntroPage />}  />
           <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 

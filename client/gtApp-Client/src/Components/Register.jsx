@@ -49,10 +49,10 @@ function Register(){
         <div className='formoutbody'>
             <form onSubmit={handleSubmit} className='formbody'>
                 <h2 className='formlabel'>SIGN UP</h2>
-                  <p className='pform'>Email</p>
+                  <p className='pform' style={{ color: 'white' }}>Email</p>
                 <TextField id="outlined-basic" label="E-mail or username" variant="outlined" name='email' onChange={handleChange} /><br />
                 {/* <input type='text' name='email' placeholder='email' onChange={handleChange}/><br /> */}
-                <p className='pform'>Password</p>
+                  <p className='pform' style={{ color: 'white' }}>Password</p>
                 <TextField id="outlined-basic" label="Password" variant="outlined" type='password' name='password' onChange={handleChange} /><br />
                 {/* <input type='password' name='password' placeholder='password' onChange={handleChange}/><br /> */}
                 {error && (

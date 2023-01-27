@@ -72,7 +72,7 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
                                     Event: {event.title}
                                     </Typography>
                                     <Typography sx={{ mb: 1.5 }}>
-                                    {event.about}{event.going}
+                                    {event.about}
                                     </Typography>
                                     <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                                         <Button disabled style ={{background: 'rgb(205, 106, 101)', color: '#fff'}}variant="contained">{event.going} Attending</Button>
