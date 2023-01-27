@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_231655) do
     t.string "title"
     t.date "date"
     t.string "about"
+    t.integer "event_no"
     t.string "location"
     t.integer "going", default: 1
     t.integer "host_id"
