@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.string :title
       t.date :date
       t.string :about
+      t.integer :event_no
       t.string :location
       t.integer :going, default: 1
       t.integer :host_id
