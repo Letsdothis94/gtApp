@@ -36,7 +36,7 @@ function Confirmed({confirmEvent, setConfirmEvent}){
         }
     return (
         <>
-            <hr style={{width: '90%'}}/>
+            <hr style={{width: '90%', marginTop: '3%'}}/>
             <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', margin: '5%'}}>
                 <h1>Confirmed Events</h1>
                 
