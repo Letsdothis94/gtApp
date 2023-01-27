@@ -43,12 +43,12 @@ function Confirmed({user, qr, setQr, confirmEvent, setConfirmEvent}){
         <>
             <hr style={{width: '90%', marginTop: '3%'}}/>
             <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', margin: '5%'}}>
-                <h1>Confirmed Events</h1>
+                <h1 style={{fontFamily: "'Work Sans', sans-serif"}}>Confirmed Events</h1>
                 {
                 confirmEvent.map((confirmed)=> {
                     return(
                         <>
-                        <div key={confirmed.id}>
+                        <div className={'conf-cont'} key={confirmed.id}>
                             <Box sx={{ width: '40vw', bgcolor: 'background.paper' }}>
                                 <nav style={{color: 'black'}} aria-label="main mailbox folders">
                                     <List>
@@ -75,7 +75,7 @@ function Confirmed({user, qr, setQr, confirmEvent, setConfirmEvent}){
                         </div>
                         {!user && (
                             <>
-                                <h2>Need a QR code? Create an account!</h2>
+                                <h2 style={{fontFamily: 'sans-serif'}}>Need a QR code? Create an account!</h2>
                                 <Link style={{textDecoration: 'none'}} to={'/register'}><Button variant='contained'>Signup!</Button></Link>
                             </>
                         )}
