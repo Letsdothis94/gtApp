@@ -46,69 +46,74 @@ function SelEvents({confirmEvent, setConfirmEvent, selEvent, setSelEvent}){
     }
 
     return(
+    <>
+        <hr style={{width: '90%', marginTop: '3%'}}/>
         <div className='sel-cont' style={{padding: '3%'}}>
-            {
-                selEvent.map((event, i)=> {
-                    return(
-                        <div key={i} className='sel-event-cont'>
-                                <Box style={{color: 'black'}} sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                                <nav aria-label="main mailbox folders">
+            <div className="sel-wrap">
+                {
+                    selEvent.map((event, i)=> {
+                        return(
+                            <div key={i} className='sel-event-cont'>
+                                    <Box style={{color: 'black'}} sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                    <nav aria-label="main mailbox folders">
+                                        <List>
+                                        <ListItem >
+                                            <ListItemIcon>
+                                                <TitleIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={event.title} />
+                                        </ListItem>
+                                        <ListItem >
+                                            <ListItemIcon>
+                                                <InfoIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={event.about} />
+                                        </ListItem>
+                                        </List>
+                                    </nav>
+                                    <Divider />
+                                    <nav aria-label="secondary mailbox folders">
+                                        <List>
+                                        <ListItem >
+                                            <ListItemIcon>
+                                                <DateRangeIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={event.date} />
+                                        </ListItem>
+                                        <ListItem >
+                                            <ListItemIcon>
+                                                <PlaceIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={event.location} />
+                                        </ListItem>
+                                        </List>
+                                    </nav>
+                                    <Divider />
                                     <List>
-                                    <ListItem >
-                                        <ListItemIcon>
-                                            <TitleIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary={event.title} />
-                                    </ListItem>
-                                    <ListItem >
-                                        <ListItemIcon>
-                                            <InfoIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary={event.about} />
-                                    </ListItem>
+                                        <ListItem style={{display: 'flex', justifyContent: 'space-between', padding: '10%'}}>
+                                            <Link style={{textDecoration: 'none'}} to={'/'}>
+                                                <Button variant='contained' onClick={() => handleClick(event)}>Join</Button>
+                                            </Link>
+                                            <Link style={{textDecoration: 'none'}} to={'/'}>
+                                                <Button variant='contained' onClick={()=> handleBack(event)}>Go back</Button>
+                                            </Link>
+                                        </ListItem>
                                     </List>
-                                </nav>
-                                <Divider />
-                                <nav aria-label="secondary mailbox folders">
-                                    <List>
-                                    <ListItem >
-                                        <ListItemIcon>
-                                            <DateRangeIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary={event.date} />
-                                    </ListItem>
-                                    <ListItem >
-                                        <ListItemIcon>
-                                            <PlaceIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary={event.location} />
-                                    </ListItem>
-                                    </List>
-                                </nav>
-                                <Divider />
-                                <List>
-                                    <ListItem style={{display: 'flex', justifyContent: 'space-between', padding: '10%'}}>
-                                        <Link style={{textDecoration: 'none'}} to={'/'}>
-                                            <Button variant='contained' onClick={() => handleClick(event)}>Join</Button>
-                                        </Link>
-                                        <Link style={{textDecoration: 'none'}} to={'/'}>
-                                            <Button variant='contained' onClick={()=> handleBack(event)}>Go back</Button>
-                                        </Link>
-                                    </ListItem>
-                                </List>
-                                
-                                </Box>
-                                <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
-                                    <Button style={{color:'black', background: 'white', marginTop: '25%', padding: '6% 8%', justifySelf: 'center', }} disabled>{selEvent[0].going} Attending</Button>
-                                </div>
-                                
-                        </div>
-                    )
-                })
-            }
-            <Map selEvent={selEvent} />
-            
+                                    
+                                    </Box>
+                                    <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+                                        <Button style={{color:'black', background: 'white', marginTop: '25%', padding: '6% 8%', justifySelf: 'center', }} disabled>{selEvent[0].going} Attending</Button>
+                                    </div>
+                                    
+                            </div>
+                        
+                        )
+                    })
+                }
+                <Map selEvent={selEvent} />
+            </div>
         </div>
+    </>
     )
 }
 

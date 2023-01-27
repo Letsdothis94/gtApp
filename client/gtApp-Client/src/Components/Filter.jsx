@@ -1,8 +1,7 @@
 import { useState } from "react";
 import * as React from 'react';
-import LoadingButton from '@mui/lab/LoadingButton';
-import SaveIcon from '@mui/icons-material/Save';
-import Stack from '@mui/material/Stack';
+import { Button } from "@mui/material";
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const FilterBar = ({
 //   genders,
@@ -44,19 +43,21 @@ const FilterBar = ({
   };
 
   return (
-    <div className="row my-5">
-      <div className="col">
-        <h4 className="border-bottom">Filters</h4>
+    <div className="filter-cont">
+      <div className="title-cont">
+        <h2 className="border-bottom">Filters</h2>
       </div>
-      <div className="col-sm-12 my-2">
-        <label htmlFor="name">Name</label>
+      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+        <label style={{fontSize: '23px'}}htmlFor="name">Title: </label>
         <input
           type="text"
-          className="form-control"
+          className="title-input"
           id="name"
+          placeholder="Search Event"
           value={filters.title}
           onChange={handleInput("title")}
         />
+        <Button variant="contained" style={{background: '#383838'}} onClick={refreshPage}><RefreshIcon/></Button>
       </div>
 
       {/* <div className="col-sm-12 my-2">
@@ -75,7 +76,7 @@ const FilterBar = ({
         </select>
       </div> */}
 
-      <div className="col-sm-12 my-2">
+      {/* <div className="col-sm-12 my-2">
         <label htmlFor="startDate">From</label>
         <input
           type="date"
@@ -83,7 +84,7 @@ const FilterBar = ({
           id="startDate"
           onChange={handleInput("from")}
         />
-      </div>
+      </div> */}
       {/* <div className="col-sm-12 my-2">
         <label htmlFor="endDate">To</label>
         <input
@@ -95,22 +96,7 @@ const FilterBar = ({
       </div> */}
       
       {/* <button onClick={refreshPage}>refresh</button> */}
-      <Stack direction="row" spacing={2}>
-      {/* <LoadingButton  onClick={refreshPage} style={{color: 'white'}} loading variant="outlined">
-        Submit
-      </LoadingButton> */}
-      <LoadingButton  onClick={refreshPage} style={{color: 'white'}} loading loadingIndicator="Loading…" variant="outlined">
-        Fetch data
-      </LoadingButton>
-      <LoadingButton
-        loading
-        loadingPosition="start"
-        startIcon={<SaveIcon />}
-        variant="outlined"
-      >
-        Save
-      </LoadingButton>
-    </Stack>
+      
     </div>
   );
 };

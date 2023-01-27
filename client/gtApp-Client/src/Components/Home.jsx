@@ -12,7 +12,7 @@ import './Css/Home.css'
 //     const jwt = localStorage.getItem('token')
 //     logUser = jwtDecode(jwt)
 // // }
-function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
+function Home({eventData, setEventData, selEvent, setSelEvent}) {
 
     //WebSockets Starts Here:
     useEffect(() => {
@@ -50,41 +50,11 @@ function Home({eventData, setEventData, selEvent, setSelEvent, user}) {
     }, [])
 
     //WebSockets Ends Here
-
-    // const [user, setUser] = useState(logUser) 
-    // console.log(user)
-
-    // useEffect(() => {
-    //     const request= async() => {
-    //         let req = await fetch('http://127.0.0.1:3000/events')
-    //         let res = await req.json()
-    //         setEventData(res)
-    //         // console.log(eventData)
-    //     }
-    //     request()
-    // }, [])
-
-
-
-
+    
     // console.log(user.token)
     return (
-        <div style={{backgroundColor:'#1A1A1D'}} className="home-cont">  
-            <h1>This is the home page</h1>
-                {!user && (
-                <>
-                <Link to={"/login"}>go to login</Link>
-                <Link to={"/register"}>register</Link>
-                </>
-                )}
-                {user && (
-                    <>
-                        <Link to={"/profile"}>Profile</Link>
-                        <Link to={"/logout"}>Logout</Link>
-                    </>
-                )}
-
-                <Link to={"/post"}>form</Link>
+        <div className="home-cont">  
+            <hr style={{width: '90%', marginTop: '3%'}}/>
                 <Events eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} />
         </div>
     )

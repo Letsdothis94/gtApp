@@ -16,7 +16,7 @@ import "@reach/combobox/styles.css";
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 
 
-const containerStyle = { width: '500px', height: '500px'};
+const containerStyle = { width: '100%', height: '80%'};
 const center = { lat: 40.7128, lng: -74.0060 };
 const key= 'AIzaSyBimrGPOFpuYMjcVFSxX4XRnH-cNVWC0XI'
 
@@ -43,7 +43,7 @@ function Map({selEvent}) {
 
   return (
     <div className='map-cont'>
-        <div>
+        <div className='input-cont'>
           <PlacesAutoComplete originSelect ={originSelect} selEvent={selEvent} setOrigin={setOrigin}/>
         </div>
         <GoogleMap
@@ -80,7 +80,7 @@ const PlacesAutoComplete = ({ setOrigin, selEvent}) => {
   };
 
   return (
-    <div className='input-cont'>
+    <div className='input-wrap'>
       <Combobox onSelect={handleSelect}>
         <ComboboxInput 
           value={value} //INPUTS VALUE 

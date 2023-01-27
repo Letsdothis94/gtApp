@@ -5,10 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { Link } from 'react-router-dom';
 
-export default function BasicMenu({setConfirmEvent, confirmEvent}) {
+export default function BasicMenu({user, setConfirmEvent, confirmEvent}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -27,7 +28,7 @@ export default function BasicMenu({setConfirmEvent, confirmEvent}) {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Dashboard
+        <MenuIcon fontSize='large' style={{ color: '#fff' }}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -37,11 +38,25 @@ export default function BasicMenu({setConfirmEvent, confirmEvent}) {
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
+        PaperProps={{
+          style: {
+            height: '40vh'
+        }}}
       >
-        <Link to={'/confirmed'} ><MenuItem onClick={handleClose}>Joined Events</MenuItem></Link>
-        <Link to={'/profile'} ><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
-        <Link to={'/register'} ><MenuItem onClick={handleClose}>Register</MenuItem></Link>
-        <Link to={'/logout'} ><MenuItem onClick={handleClose}>Logout</MenuItem></Link>
+          {!user && (
+            <>
+              <Link to={'/confirmed'} style={{textDecoration: 'none', color: 'black'}}><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Confirmed Events</MenuItem></Link>     
+              <Link to={"/login"} style={{textDecoration: 'none', color: 'black'}}><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Login</MenuItem></Link>
+              <Link to={'/register'} style={{textDecoration: 'none', color: 'black'}}><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Register</MenuItem></Link>
+            </>
+            )}
+          {user && (
+            <>
+              <Link to={'/confirmed'} style={{textDecoration: 'none', color: 'black'}}><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Confirmed Events</MenuItem></Link>        
+              <Link to={'/profile'} style={{textDecoration: 'none', color: 'black'}} ><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Profile</MenuItem></Link>
+              <Link to={'/logout'} style={{textDecoration: 'none', color: 'black'}} ><MenuItem style={{margin: '10% 0', fontSize: '20px'}} onClick={handleClose}>Logout</MenuItem></Link> 
+            </>
+          )}
       </Menu>
     </div>
   );

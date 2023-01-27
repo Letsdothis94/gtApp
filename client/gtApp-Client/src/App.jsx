@@ -49,11 +49,11 @@ function App() {
         request()
     }, [])
   return (
-    <div className="App" style={{background: '#414141'}}>
+    <div className="App">
       <BrowserRouter>
-        <Header confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} loginData={loginData} setLoginData={setLoginData}/>
+        <Header user={user} confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent} loginData={loginData} setLoginData={setLoginData}/>
         <Routes>
-          <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent} user={user}/>}/>
+          <Route path={'/'} element={<Home eventData={eventData} setEventData={setEventData} selEvent={selEvent} setSelEvent={setSelEvent}/>}/>
           <Route path={'/register'} element={<Register /> } />
           <Route path={'/login'} element={<Login loginData={loginData} setLoginData={setLoginData}/>}/> 
           <Route path={'/confirmed'} element={<Confirmed confirmEvent={confirmEvent} setConfirmEvent={setConfirmEvent}/>} />

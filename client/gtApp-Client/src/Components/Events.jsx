@@ -52,11 +52,12 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
     return(
         <div className="event-cont" style={{padding: '5%', backgroundColor:'#1A1A1D', borderRadius: '2%', display: 'flex', flexDirection: 'column'}}>
             <Filter onNameFilter={handleFilterName} onDateFilter={handleFilterDate} refreshPage={refreshPage}/>
+            <div className="event-wrap">
             {
                 eventData.map((event, i)=> {
                     return(
                         <div className='card-cont' key={event.id}>
-                            <Card style={{background:'none', borderRadius: '15px', color: '#fff', }} sx={{ mmaxWidth: 200 }}>
+                            <Card style={{background:'none', borderRadius: '15px', color: 'black', width: '100%'}}>
                                 <CardContent>
                                     <Typography sx={{ fontSize: 14 }} gutterBottom>
                                     {event.location}
@@ -68,20 +69,21 @@ function Events({selEvent, setSelEvent, eventData, setEventData}){
                                     <Typography sx={{ mb: 1.5 }}>
                                     {event.about}{event.going}
                                     </Typography>
-                                    <Typography variant="body2">
-                                    Date: {event.date}
-                                    <br />
-                                    {'"a benevolent smile"'}
-                                    </Typography>
+                                    <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+                                        <Button disabled style ={{background: 'rgb(205, 106, 101)', color: '#fff'}}variant="contained">{event.going} Attending</Button>
+                                    </div>
+                                    
                                 </CardContent>
                                 <CardActions >
-                                    <Link to={'/selEvent'}><Button style={{color: '#fff', textDecoration: 'none'}} size="large" onClick={()=> handleEvent(event)}>Learn More</Button></Link>
+                                    <Link to={'/selEvent'}>
+                                    <Button style={{color: '#000', textDecoration: 'none'}}  size="large" onClick={()=> handleEvent(event)}>Learn More</Button></Link>
                                 </CardActions>
                             </Card>
                         </div>
                     )
                 })
             }
+            </div>
         </div>
     )
 }
