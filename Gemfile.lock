@@ -84,6 +84,8 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.1)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -92,6 +94,7 @@ GEM
     irb (1.6.2)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.6.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -115,6 +118,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nokogiri (1.14.0-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     puma (5.6.5)
@@ -155,6 +160,8 @@ GEM
     redis (4.8.0)
     reline (0.3.2)
       io-console (~> 0.5)
+    spring (4.1.1)
+    sqlite3 (1.6.0-x86_64-darwin)
     sqlite3 (1.6.0-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.1)
@@ -166,6 +173,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -173,10 +181,13 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
+  faker
+  jwt
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.1)
   redis (~> 4.0)
+  spring
   sqlite3 (~> 1.4)
   tzinfo-data
 
