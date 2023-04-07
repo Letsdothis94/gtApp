@@ -7,7 +7,7 @@ class EventsController < ApplicationController
         event = Event.find_by!(id: params[:id])
             ActionCable.server.broadcast('live_feed', {
             post: event
-    })
+        })
         if event.valid?
             render json: event
         else
